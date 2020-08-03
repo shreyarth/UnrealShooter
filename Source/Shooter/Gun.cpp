@@ -3,6 +3,8 @@
 
 #include "Gun.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 AGun::AGun()
 {
@@ -28,5 +30,11 @@ void AGun::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AGun::PullTrigger()
+{
+	UE_LOG(LogTemp, Warning, TEXT("AHHH I GOT SHOT"));
+	UGameplayStatics::SpawnEmitterAttached(muzzleFlash, gunMesh, TEXT("MuzzleFlashSocket"));
 }
 

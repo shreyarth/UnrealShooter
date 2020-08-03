@@ -6,14 +6,22 @@
 #include "GameFramework/Character.h"
 #include "ShooterCharacter.generated.h"
 
+class AGun;
 UCLASS()
 class SHOOTER_API AShooterCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 private:
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<AGun> gunClass;
+	UPROPERTY()
+		AGun* gun;
+
+
 	void MoveForward(float val);
 	void MoveRight(float val);
+	void Shoot();
 	//void LookUp(float val);
 
 public:
