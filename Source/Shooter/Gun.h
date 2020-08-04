@@ -16,8 +16,12 @@ private:
 		USceneComponent * gunRoot;
 	UPROPERTY(VisibleAnywhere)
 		USkeletalMeshComponent* gunMesh;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Effects")
 		UParticleSystem* muzzleFlash;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+		UParticleSystem* hitParticle;
+	UPROPERTY(EditAnywhere)
+		float maxRange = 1000.f;
 
 public:	
 	// Sets default values for this actor's properties
