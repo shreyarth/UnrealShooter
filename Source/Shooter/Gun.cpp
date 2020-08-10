@@ -37,7 +37,7 @@ void AGun::Tick(float DeltaTime)
 
 void AGun::PullTrigger()
 {
-	UE_LOG(LogTemp, Warning, TEXT("AHHH I GOT SHOT"));
+	//UE_LOG(LogTemp, Warning, TEXT("AHHH I GOT SHOT"));
 	UGameplayStatics::SpawnEmitterAttached(muzzleFlash, gunMesh, TEXT("MuzzleFlashSocket"));
 
 	FVector location;

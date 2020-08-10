@@ -17,6 +17,8 @@ void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	Health = MaxHP;
+
 	gun = GetWorld()->SpawnActor<AGun>(gunClass);
 	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None);
 	gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("WeaponSocket"));
@@ -56,6 +58,20 @@ void AShooterCharacter::Shoot() {
 	gun->PullTrigger();
 }
 
+float AShooterCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float DamageToApply = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	DamageToApply = FMath::Min(Health, DamageToApply);
+	Health -= DamageToApply;
+	UE_LOG(LogTemp, Warning, TEXT("HP = %f"), Health);
+	return DamageToApply;
+}
+
+bool AShooterCharacter::IsDead() const
+{
+	if (Health > 0) { return false; }
+	else { return true; }
+}
 //Look up or down
 //void AShooterCharacter::LookUp(float val) {
 //	AddControllerPitchInput(val);
