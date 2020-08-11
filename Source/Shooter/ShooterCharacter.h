@@ -29,13 +29,12 @@ private:
 
 	void MoveForward(float val);
 	void MoveRight(float val);
-	void Shoot();
-	void Sprint();
 	//void LookUp(float val);
 
 public:
 	// Sets default values for this character's properties
 	AShooterCharacter();
+	void Shoot();
 
 protected:
 	// Called when the game starts or when spawned
