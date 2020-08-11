@@ -4,6 +4,7 @@
 #include "ShooterCharacter.h"
 #include "Gun.h"
 #include "Components/CapsuleComponent.h"
+#include "ShooterGameModeBase.h"
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -46,6 +47,11 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
 }
 
+float AShooterCharacter::GetHP() const {
+	return Health / MaxHP;
+}
+
+
 //Move Forward or back
 void AShooterCharacter::MoveForward(float val) {
 	AddMovementInput(GetActorForwardVector() * val);
@@ -67,6 +73,10 @@ float AShooterCharacter::TakeDamage(float DamageAmount, FDamageEvent const& Dama
 	UE_LOG(LogTemp, Warning, TEXT("HP = %f"), Health);
 
 	if (IsDead()) {
+		AShooterGameModeBase* GameMode = GetWorld()->GetAuthGameMode<AShooterGameModeBase>();
+		if (GameMode != nullptr) {
+			GameMode->PawnKilled(this);
+		}
 		DetachFromControllerPendingDestroy();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}

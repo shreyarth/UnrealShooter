@@ -19,11 +19,19 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Effects")
 		UParticleSystem* muzzleFlash;
 	UPROPERTY(EditAnywhere, Category = "Effects")
+		USoundBase* MuzzleSound;
+	UPROPERTY(EditAnywhere, Category = "Effects")
 		UParticleSystem* hitParticle;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+		USoundBase* HitSound;
 	UPROPERTY(EditAnywhere)
 		float maxRange = 1000.f;
 	UPROPERTY(EditAnywhere)
 		float damage = 10.f;
+
+	bool GunTrace(FHitResult& Hit, FVector& ShotDirection);
+
+	AController* GetOwnerController() const;
 
 public:	
 	// Sets default values for this actor's properties
