@@ -17,6 +17,9 @@ class SHOOTER_API AShooterAIController : public AAIController
 private:
 	APawn* PlayerPawn;
 
+	UPROPERTY(EditDefaultsOnly)
+		class UBehaviorTree* AIBehavior;
+
 public:
 	// Sets default values for this character's properties
 	AShooterAIController();

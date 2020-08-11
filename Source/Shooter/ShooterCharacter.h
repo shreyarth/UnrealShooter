@@ -21,11 +21,16 @@ private:
 		float MaxHP = 100.f;
 	UPROPERTY(VisibleAnywhere)
 		float Health;
+	UPROPERTY(EditDefaultsOnly)
+		float WalkSpeed = 50.f;
+	UPROPERTY(EditDefaultsOnly)
+		float SprintSpeed = 100.f;
 
 
 	void MoveForward(float val);
 	void MoveRight(float val);
 	void Shoot();
+	void Sprint();
 	//void LookUp(float val);
 
 public:
