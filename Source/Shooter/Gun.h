@@ -28,7 +28,9 @@ private:
 		float maxRange = 1000.f;
 	UPROPERTY(EditAnywhere)
 		float damage = 10.f;
-
+	
+	UPROPERTY(EditDefaultsOnly)
+		int32 DefaultAmmo;
 	bool GunTrace(FHitResult& Hit, FVector& ShotDirection);
 
 	AController* GetOwnerController() const;
@@ -37,7 +39,10 @@ public:
 	// Sets default values for this actor's properties
 	AGun();
 
+	UPROPERTY(EditDefaultsOnly)
+		int32 Ammo = 50;
 	void PullTrigger();
+	void Reload();
 
 protected:
 	// Called when the game starts or when spawned

@@ -45,12 +45,16 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
+	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Reload);
 }
 
 float AShooterCharacter::GetHP() const {
 	return Health / MaxHP;
 }
 
+int32 AShooterCharacter::GetAmmo() {
+	return gun->Ammo;
+}
 
 //Move Forward or back
 void AShooterCharacter::MoveForward(float val) {
@@ -63,6 +67,10 @@ void AShooterCharacter::MoveRight(float val) {
 
 void AShooterCharacter::Shoot() {
 	gun->PullTrigger();
+}
+
+void AShooterCharacter::Reload() {
+	gun->Reload();
 }
 
 float AShooterCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)

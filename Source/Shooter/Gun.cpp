@@ -25,7 +25,7 @@ AGun::AGun()
 void AGun::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	DefaultAmmo = Ammo;
 }
 
 // Called every frame
@@ -60,10 +60,11 @@ bool AGun::GunTrace(FHitResult& Hit, FVector& ShotDirection) {
 
 void AGun::PullTrigger()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("AHHH I GOT SHOT"));
+	Ammo--;
+	if (Ammo <= 0) { return; }
+	//UE_LOG(LogTemp, Warning, TEXT("Ammo: %i"), Ammo);
 	UGameplayStatics::SpawnEmitterAttached(muzzleFlash, gunMesh, TEXT("MuzzleFlashSocket"));
 	UGameplayStatics::SpawnSoundAttached(MuzzleSound, gunMesh, TEXT("MuzzleFlashSocket"));
-
 	FHitResult hit_result;
 	FVector shotDirection;
 	bool bHit = GunTrace(hit_result, shotDirection);
@@ -78,5 +79,9 @@ void AGun::PullTrigger()
 			actorHit->TakeDamage(damage, DamageEvent, ownerController, this);
 		}
 	}
+}
+
+void AGun::Reload() {
+	Ammo = DefaultAmmo;
 }
 

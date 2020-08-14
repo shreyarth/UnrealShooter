@@ -35,6 +35,7 @@ public:
 	// Sets default values for this character's properties
 	AShooterCharacter();
 	void Shoot();
+	void Reload();
 
 protected:
 	// Called when the game starts or when spawned
@@ -46,7 +47,10 @@ public:
 
 	UFUNCTION(BlueprintPure)
 		float GetHP() const;
-
+	
+	UFUNCTION(BlueprintPure)
+		int32 GetAmmo();
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
