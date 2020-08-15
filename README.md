@@ -13,10 +13,10 @@ Mechanics learned/planned in game:
 - [x] NavMesh pathfinding (Tutorial)
 - [x] AI Behavior Tree (Tutorial)
 - [x] Ammo logic (Self)
-- [ ] Types of Ammo
-- [ ] Types of Guns
-- [ ] Better AI
-- [ ] Planning more mechanics
+- [ ] Types of Ammo (Self)
+- [ ] Types of Guns (Self)
+- [ ] Better AI (Self)
+- [ ] Planning more mechanics (Self)
 
 
 ###### All the assets were provided by *Unreal Engine C++ Developer: Learn C++ and Make Video Games* course on [Udemy](https://www.udemy.com/course/unrealcourse/).
