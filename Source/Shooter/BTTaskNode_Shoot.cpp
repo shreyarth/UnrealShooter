@@ -4,6 +4,7 @@
 #include "BTTaskNode_Shoot.h"
 #include "AIController.h"
 #include "ShooterCharacter.h"
+#include "Gun.h"
 
 UBTTaskNode_Shoot::UBTTaskNode_Shoot() {
 	NodeName = TEXT("Shoot");
@@ -17,7 +18,7 @@ EBTNodeResult::Type UBTTaskNode_Shoot::ExecuteTask(UBehaviorTreeComponent & Owne
 
 	AShooterCharacter* Character = Cast<AShooterCharacter>(OwnerComp.GetAIOwner()->GetPawn());
 	if(Character == nullptr){ return EBTNodeResult::Failed; }
-
+	if (Character->gun->Ammo <= 0) { Character->Reload(); }
 	Character->Shoot();
 
 	return EBTNodeResult::Succeeded;

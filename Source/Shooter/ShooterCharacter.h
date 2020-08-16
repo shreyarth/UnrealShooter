@@ -15,8 +15,7 @@ class SHOOTER_API AShooterCharacter : public ACharacter
 private:
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<AGun> gunClass;
-	UPROPERTY()
-		AGun* gun;
+	
 	UPROPERTY(EditDefaultsOnly)
 		float MaxHP = 100.f;
 	UPROPERTY(VisibleAnywhere)
@@ -34,6 +33,8 @@ private:
 public:
 	// Sets default values for this character's properties
 	AShooterCharacter();
+	UPROPERTY()
+		AGun* gun;
 	void Shoot();
 	void Reload();
 
