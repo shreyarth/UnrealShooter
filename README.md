@@ -13,9 +13,6 @@ Mechanics learned/planned in game:
 - [x] NavMesh pathfinding (Tutorial)
 - [x] AI Behavior Tree (Tutorial)
 - [x] Ammo logic (Self)
-- [ ] Types of Ammo (Self)
-- [ ] Types of Guns (Self)
-- [ ] Better AI (Self)
 - [ ] Planning more mechanics (Self)
 
 
